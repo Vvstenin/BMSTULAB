@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Style Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="controls">
+        <button id="theme-toggle" class="theme-btn">🌙</button>
+        <a href="https://github.com/Vvstenin/BMSTULAB/tree/lab1-2/calc" target="_blank" class="github-btn">GitHub</a>
+    </div>
+    
+    <div class="logo"   >
+        <img src="images/sm_5b37de3263964-removebg-preview.png" alt="Instagram Logo">
+    </div>
+    
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn operator" onclick="clearDisplay()">C</button>
+            <button class="btn operator" onclick="backspace()">⌫</button>
+            <button class="btn operator" onclick="appendToDisplay('±')">±</button>
+            <button class="btn operator" onclick="appendToDisplay('%')">%</button>
+
+            
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn operator" onclick="appendToDisplay('*')">×</button>
+            
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+            
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+            
+
+        </div>
+    </div>
+
+    <div class="instagram-panel">
+        <div class="dropdown">
+            <select id="calc-type" class="instagram-select">
+                <option value="standard">Standard</option>
+                <option value="scientific">Scientific</option>
+                <option value="programmer">Programmer</option>
+            </select>
+        </div>
+        
+        <details class="instagram-details">
+            <summary>Автор</summary>
+            <div class="instagram-details-content">
+                <p>ФИО: Иванов Иван Иванович</p>
+                <p>Группа: ПИ-123</p>
+            </div>
+        </details>
+        
+        <div class="instagram-purpose">
+            <p>Цель ЛР: <mark>знакомство</mark> с основами <mark>HTML</mark> и <mark>CSS</mark></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

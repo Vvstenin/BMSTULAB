@@ -1,0 +1,214 @@
+body {
+    font-family: Arial,sans-serif;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.controls,.bottom-right {
+    display: flex;
+    gap: 10px;
+}
+
+.controls {
+    margin-bottom: 15px;
+    align-self: flex-end;
+}
+
+.theme-btn,.github-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.theme-btn {
+    background: #e0e0e0;
+}
+
+.github-btn {
+    background: #333;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.bottom-right {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.dropdown select,.instagram-select {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.author-info,.instagram-details {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.author-info {
+    width: 200px;
+}
+
+.author-info summary,.instagram-details summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.purpose,.instagram-purpose {
+    max-width: 300px;
+    text-align: right;
+    font-size: 14px;
+    color: #262626;
+}
+
+mark {
+    background: #d6249f;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.logo {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.calculator,.instagram-panel {
+    width: 260px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.calculator {
+    margin-top: 15px;
+}
+
+.display {
+    background: #f8f8f8;
+    color: #333;
+    font-size: 2em;
+    padding: 15px;
+    text-align: right;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 8px;
+}
+
+.btn {
+    border: none;
+    padding: 15px;
+    font-size: 1.2em;
+    background: #f8f8f8;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s background;
+}
+
+.btn:hover {
+    background: #eee;
+}
+
+.operator {
+    background: #d6249f;
+    color: white;
+}
+
+.operator:hover {
+    background: #b31b86;
+}
+
+.equals {
+    background: linear-gradient(45deg,#405de6,#5851db,#833ab4,#c13584,#e1306c,#fd1d1d);
+    color: white;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.instagram-panel {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    flex-direction: column;
+    max-width: 220px;
+    border: 1px solid #e6e6e6;
+}
+
+.instagram-select {
+    border: 1px solid #dbdbdb;
+    background: #fafafa;
+    color: #262626;
+}
+
+.instagram-details {
+    background: #fafafa;
+    border: 1px solid #dbdbdb;
+}
+
+.instagram-details summary {
+    font-weight: 600;
+    color: #262626;
+    outline: none;
+}
+
+.instagram-details-content {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #efefef;
+    font-size: 14px;
+    color: #262626;
+}
+
+.instagram-purpose {
+    text-align: center;
+}
+
+.instagram-purpose mark {
+    background: linear-gradient(45deg,#405de6,#5851db,#833ab4);
+    padding: 2px 6px;
+}
+
+.dark-theme {
+    background-color: #121212;
+    color: #fff;
+}
+
+.dark-theme .calculator {
+    background-color: #1e1e1e;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.dark-display {
+    background-color: #333!important;
+    color: #fff!important;
+}
