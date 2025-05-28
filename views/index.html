@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Cards</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Instagram Cards</h1>
+    <a href="/">🏠 Домой</a>
+  </header>
+
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Поиск по имени">
+    <button type="submit">🔍</button>
+  </form>
+
+  <button onclick="location.href='/edit.html'">➕ Добавить карточку</button>
+  <div id="cardContainer" class="card-list"></div>
+  <div class="mb-3">
+    <label class="form-label">1. Повторяющиеся элементы (например: 1,2,2,3)</label>
+    <input type="text" id="identicInput" class="form-control" />
+    <button class="btn btn-primary mt-2" onclick="handleIdentic()">Посчитать</button>
+    <div id="identicResult" class="mt-2 text-success"></div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">2. Среднее массива (например: 5,10,15)</label>
+    <input type="text" id="averageInput" class="form-control" />
+    <button class="btn btn-primary mt-2" onclick="handleAverage()">Вычислить</button>
+    <div id="averageResult" class="mt-2 text-success"></div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">3. Сравнение массивов (например: 1,2,3;3,2,1)</label>
+    <input type="text" id="transformInput" class="form-control" />
+    <button class="btn btn-primary mt-2" onclick="handleTransform()">Проверить</button>
+    <div id="transformResult" class="mt-2 text-success"></div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">4. Проверка палиндрома (например: А роза упала на лапу Азора)</label>
+    <input type="text" id="palindromeInput" class="form-control" />
+    <button class="btn btn-primary mt-2" onclick="handlePalindrome()">Проверить</button>
+    <div id="palindromeResult" class="mt-2 text-success"></div>
+  </div>
+  <script>
+    // 1.2 - Кол-во повторяющихся элементов
+function countIdentic(arr) {
+    const freq = {};
+    let count = 1;
+    arr.forEach(num => {
+      const key = String(num);  
+      freq[key] = (freq[key] || 0) + 1;
+    });
+  
+    for (let key in freq) {
+      if (freq[key] > 1) {
+        count += freq[key] - 1; 
+      }
+    }
+  
+    return count;
+  }
+  
+  
+  // 1.8 - Среднее массива
+  function average(arr) {
+    if (arr.length === 0) return 0;
+    const sum = arr.reduce((acc, val) => acc + val, 0);
+    return sum / arr.length;
+  }
+  
+  // 2.9 - Можно ли получить один массив из другого
+  function canTransform(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+    const sorted1 = [...arr1].sort((a, b) => a - b);
+    const sorted2 = [...arr2].sort((a, b) => a - b);
+    return JSON.stringify(sorted1) === JSON.stringify(sorted2);
+  }
+  
+  // 3.8 - Палиндром (1 способ)
+  function isPalindrome(input) {
+    const str = input.toString().toLowerCase().replace(/[^a-zа-яё0-9]/gi, '');
+    return str === str.split('').reverse().join('');
+  }
+  
+  
+  
+  
+  
+  // 1. Кол-во повторяющихся элементов
+  function handleIdentic() {
+    const input = document.getElementById("identicInput").value;
+    const arr = input.split(',').map(num => parseInt(num.trim(), 10));
+    const result = countIdentic(arr);
+    document.getElementById("identicResult").textContent = `Повторяющихся элементов: ${result}`;
+  }
+  
+  // 2. Среднее массива
+  function handleAverage() {
+    const input = document.getElementById("averageInput").value;
+    const arr = input.split(',').map(num => parseInt(num.trim(), 10));
+    const result = average(arr);
+    document.getElementById("averageResult").textContent = `Среднее значение: ${result}`;
+  }
+  
+  // 3. Можно ли получить один массив из другого
+  function handleTransform() {
+    const input = document.getElementById("transformInput").value;
+    const [arr1, arr2] = input.split(';').map(str => str.split(',').map(num => parseInt(num.trim(), 10)));
+    const result = canTransform(arr1, arr2);
+    document.getElementById("transformResult").textContent = result ? "Массивы можно преобразовать друг в друга" : "Массивы нельзя преобразовать друг в друга";
+  }
+  
+  // 4. Палиндром
+  function handlePalindrome() {
+    const input = document.getElementById("palindromeInput").value;
+    const result = isPalindrome(input);
+    document.getElementById("palindromeResult").textContent = result ? "Это палиндром" : "Это не палиндром";
+  }
+  
+  </script>
+</body>
+</html>

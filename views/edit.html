@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Редактировать пост</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1 id="formTitle">Добавление</h1>
+  <form id="postForm">
+    <input type="text" id="author" placeholder="Автор" required /><br />
+    <input type="text" id="image" placeholder="Ссылка на изображение" required /><br />
+    <textarea id="caption" placeholder="Описание" required></textarea><br />
+    <button type="submit">💾 Сохранить</button>
+  </form>
+  <script>
+    const form = document.getElementById("postForm");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (id) {
+      fetch(`http://localhost:4000/api/posts/${id}`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("author").value = data.author;
+          document.getElementById("image").value = data.image;
+          document.getElementById("caption").value = data.caption;
+        });
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const post = {
+        author: document.getElementById("author").value,
+        image: document.getElementById("image").value,
+        caption: document.getElementById("caption").value
+      };
+
+      const method = id ? "PUT" : "POST";
+      const url = id ? `http://localhost:4000/api/posts/${id}` : `http://localhost:4000/api/posts`;
+
+      await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(post)
+      });
+
+      window.location.href = "/";
+    });
+  </script>
+</body>
+</html>
