@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Подробнее</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/script.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    header a {
+      text-decoration: none;
+      font-size: 18px;
+      color: #007bff;
+    }
+
+    .card.detail {
+      max-width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card.detail img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card.detail h2 {
+      margin: 10px 0;
+      font-size: 22px;
+      color: #444;
+    }
+
+    .card.detail p {
+      font-size: 16px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="cardName">Профиль</h1>
+    <a href="/">🏠 Домой</a>
+  </header>
+  <div class="card detail" id="detailCard"></div>
+</body>
+</html>
