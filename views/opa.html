@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактировать карточку</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Редактировать карточку</h1>
+  <form id="editForm">
+    <input type="text" id="author" placeholder="Автор" required>
+    <input type="text" id="image" placeholder="Ссылка на изображение" required>
+    <textarea id="caption" placeholder="Описание" required></textarea>
+    <button type="submit">Сохранить изменения</button>
+  </form>
+  <a href="/">← Назад</a>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    const form = document.getElementById("editForm");
+    const authorInput = document.getElementById("author");
+    const imageInput = document.getElementById("image");
+    const captionInput = document.getElementById("caption");
+
+    // Получаем карточку и заполняем форму
+    fetch(`http://localhost:4000/api/posts/${id}`)
+      .then(res => res.json())
+      .then(post => {
+        authorInput.value = post.author;
+        imageInput.value = post.image;
+        captionInput.value = post.caption;
+      });
+
+    // Отправляем обновленные данные
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      fetch(`http://localhost:4000/api/posts/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          author: authorInput.value,
+          image: imageInput.value,
+          caption: captionInput.value
+        })
+      })
+      .then(() => {
+        alert("Карточка обновлена!");
+        window.location.href = "/";
+      });
+    });
+  </script>
+</body>
+</html>
