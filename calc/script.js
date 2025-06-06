@@ -29,23 +29,37 @@ window.onload = function() {
         }
     };
 
-    const handleOperation = (op) => {
-        if (op === 'myOp') {  // Кастомная операция (пример)
-            if (currentInput !== '0' && !resetInput) {
-                const lastChar = currentInput.slice(-1);
-                if (/[0-9]/.test(lastChar)) {
-                    currentInput += lastChar;  // Дублирует последнюю цифру
-                    updateDisplay();
-                }
+
+ const handleOperation = (op) => {
+    if (op === 'myOp') {
+        try {
+            const inputDate = new Date(currentInput);
+            if (isNaN(inputDate)) {
+                currentInput = 'Неверная дата';
+                updateDisplay();
+                return;
             }
-            return;
+
+            // Последнее известное новолуние (например, 8 апреля 2024)
+            const lastNewMoon = new Date('2024-04-08T18:21:00Z');
+
+            const diffMs = inputDate - lastNewMoon;
+            const diffDays = diffMs / (1000 * 60 * 60 * 24);
+            const moonDay = (diffDays % 29.53 + 29.53) % 29.53; // цикл от 0 до 29.53
+
+            currentInput = `Лунный день: ${Math.floor(moonDay) + 1}`;
+        } catch (e) {
+            currentInput = 'Ошибка';
         }
-        
-        if (operation !== null) calculate();
-        previousInput = currentInput;
-        operation = op;
-        resetInput = true;
-    };
+        updateDisplay();
+        return;
+    }
+
+    if (operation !== null) calculate();
+    previousInput = currentInput;
+    operation = op;
+    resetInput = true;
+};
 
     const calculate = () => {
         const prev = parseFloat(previousInput);
