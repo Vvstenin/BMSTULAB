@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "author": "john_doe",
+      "image": "images/ab67616d00001e02e55a3924103c132fd3fdc480.jpeg",
+      "caption": "Sunset at the beach"
+    },
+    {
+      "id": 12,
+      "author": "1john_doe1",
+      "image": "images/ab67616d00001e02e55a3924103c132fd3fdc480.jpeg",
+      "caption": "Sunset at the beach"
+    },
+    {
+      "id": 1748256708767,
+      "author": "new_user111",
+      "image": "images/photo_2025-02-13 19.24.39.jpeg",
+      "caption": "My new post"
+    },
+    {
+      "id": 1748462761351,
+      "author": "12",
+      "image": "images/ab67616d00001e02e55a3924103c132fd3fdc480.jpeg",
+      "caption": "q"
+    }
+  ]
+}

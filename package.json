@@ -1,0 +1,13 @@
+{
+  "name": "instagram-api",
+  "version": "1.0.0",
+  "description": "Simple Instagram-style API with Node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "PORT=4000 node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
